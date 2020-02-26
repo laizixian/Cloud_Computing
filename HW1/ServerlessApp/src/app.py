@@ -34,7 +34,7 @@ def message_lambda_handler(event, context):
     #     raise e
 
     return {
-        "statusCode": 200,
+        "statusCode": 500,
         "body": json.dumps({
             "message": "I’m still under development. Please come back later",
             # "location": ip.text.replace("\n", "")

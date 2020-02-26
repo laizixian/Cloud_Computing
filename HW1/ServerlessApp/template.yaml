@@ -37,11 +37,6 @@ Resources:
                       required: true
                       schema:
                         $ref: '#/definitions/BotRequest'
-                  x-amazon-apigateway-integration:
-                    httpMethod: POST
-                    type: aws_proxy
-                    uri:
-                      Fn::Sub: arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MessageLambda.Arn}/invocations
                   responses:
                     '200':
                       description: A Chatbot response
@@ -55,6 +50,14 @@ Resources:
                       description: Unexpected error
                       schema:
                         $ref: '#/definitions/Error'
+                  x-amazon-apigateway-integration:
+                    responses:
+                      default:
+                        statusCode: 200
+                    httpMethod: POST
+                    type: aws_proxy
+                    uri:
+                      Fn::Sub: arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MessageLambda.Arn}/invocations
             definitions:
               BotRequest:
                 type: object
