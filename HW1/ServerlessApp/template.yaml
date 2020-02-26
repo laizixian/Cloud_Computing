@@ -8,13 +8,13 @@ Resources:
         StageName: prod
         DefinitionBody:
             swagger: 2.0
+            basePath: /v1
             info:
               title: AI Customer Service API
               description: 'AI Customer Service application, built during the Cloud and Big Data course at Columbia University.'
               version: 1.0.0
             schemes:
               - https
-            basePath: /v1
             produces:
               - application/json
             paths:
